@@ -1,0 +1,26 @@
+{
+	"name": "a14n",
+	"private": true,
+	"scripts": {
+		"build": "turbo run build && node scripts/moveFiles.js",
+		"dev": "turbo run dev",
+		"lint": "turbo run lint",
+		"format": "prettier --write .",
+		"check-types": "turbo run check-types"
+	},
+	"devDependencies": {
+		"@prettier/plugin-oxc": "^0.0.4",
+		"prettier": "^3.6.2",
+		"prettier-plugin-toml": "^2.0.6",
+		"turbo": "^2.5.5",
+		"typescript": "5.8.3"
+	},
+	"packageManager": "pnpm@10.13.1",
+	"engines": {
+		"node": ">=18",
+		"rust": "2024"
+	},
+	"dependencies": {
+		"next": "15.4.1"
+	}
+}

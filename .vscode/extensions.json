@@ -1,0 +1,23 @@
+{
+	"recommendations": [
+		"esbenp.prettier-vscode", // Our default formatter
+		"usernamehw.errorlens", // Error lens for better visibility of errors
+		"42Crunch.vscode-openapi", // OpenAPI support
+		"bierner.markdown-checkbox", // Markdown checkbox support
+		"ozaki.markdown-github-dark", // GitHub dark theme for Markdown
+		"bierner.markdown-emoji", // Emoji support in Markdown
+		"bierner.markdown-mermaid", // Mermaid diagrams in Markdown
+		"bierner.markdown-yaml-preamble", // YAML preamble support in Markdown
+		"bradlc.vscode-tailwindcss", // Tailwind CSS support
+		"vadimcn.vscode-lldb", // LLDB support for debugging
+		"redhat.vscode-yaml", // YAML support
+		"YoavBls.pretty-ts-errors", // Pretty TypeScript errors
+		"wix.vscode-import-cost", // Import cost analysis
+		"unifiedjs.vscode-mdx", // MDX support
+		"tamasfe.even-better-toml", // TOML support
+		"rust-lang.rust-analyzer", // Rust support
+		"Gruntfuggly.todo-tree", // TODO tree view
+		"dbaeumer.vscode-eslint", // ESLint support
+		"docsmsft.docs-yaml" // YAML documentation support
+	]
+}

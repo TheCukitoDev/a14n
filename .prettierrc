@@ -1,0 +1,15 @@
+{
+	"plugins": ["@prettier/plugin-oxc", "prettier-plugin-toml"],
+	"endOfLine": "lf",
+	"printWidth": 100,
+	"tabWidth": 4,
+	"useTabs": true,
+	"bracketSameLine": false,
+	"jsxSingleQuote": false,
+	"singleQuote": false,
+	"arrowParens": "always",
+	"trailingComma": "all",
+	"singleAttributePerLine": false,
+	"quoteProps": "as-needed",
+	"proseWrap": "preserve"
+}
