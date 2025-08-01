@@ -1,22 +1,35 @@
-use serde_json::{Result, Value};
+use axum::{Json, Router, routing::get};
+use core::str;
+use serde::{Deserialize, Serialize};
+use std::net::SocketAddr;
 
-fn main() -> Result<()> {
-    // Some JSON input data as a &str. Maybe this comes from the user.
-    let data = r#"
-        {
-            "name": "John Doe",
-            "age": 43,
-            "phones": [
-                "+44 1234567",
-                "+44 2345678"
-            ]
-        }"#;
+#[derive(Serialize, Deserialize)]
+struct Thing {
+    id: u32,
+    name: String,
+}
 
-    // Parse the string of data into serde_json::Value.
-    let v: Value = serde_json::from_str(data)?;
+async fn list_things() -> Json<Vec<Thing>> {
+    Json(vec![
+        Thing {
+            id: 1,
+            name: "Thing 1".into(),
+        },
+        Thing {
+            id: 2,
+            name: "Thing 2".into(),
+        },
+    ])
+}
 
-    // Access parts of the data by indexing with square brackets.
-    println!("Please call {} at the number {}", v["name"], v["phones"][0]);
+#[tokio::main]
+async fn main() {
+    let app = Router::new().route("/list_things", get(list_things));
 
-    Ok(())
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
+    println!("Listening on port {}", addr.port());
+
+    let listener = tokio::net::TcpListener::bind(addr).await.unwrap();
+
+    axum::serve(listener, app).await.unwrap();
 }
