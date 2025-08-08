@@ -6,8 +6,8 @@ use axum::{
     routing::{get, post},
 };
 use serde::{Deserialize, Serialize};
-use sqlx::query;
-use std::net::SocketAddr;
+use sqlx::{ConnectOptions, query};
+use std::{net::SocketAddr, str::FromStr};
 
 #[derive(Serialize, Deserialize, Debug)]
 struct DefaultResponse {
@@ -100,13 +100,11 @@ async fn authenticate_user(Json(payload): Json<AuthorizeRequestPayload>) -> Resp
 
 #[tokio::main]
 async fn main() {
-    let pool = sqlx::PgPool::connect("postgres://koyeb-adm:npg_ZXMY8bGqfAE2@ep-twilight-band-a2mk9tpa.eu-central-1.pg.koyeb.app/koyebdb") // Replace with your database connection string
-        .await
-        .unwrap();
+    let url = dotenvy::var("DATABASE_URL").expect("DATABASE_URL must be set");
 
-    let query = query!("SELECT * FROM users WHERE username = $1", "testuser")
-        .fetch_one(&pool)
-        .await;
+    let pool = sqlx::PgPool::connect(&url).await.unwrap();
+
+    let query = query!("SELECT * FROM users").fetch_all(&pool).await;
 
     println!("Query result: {:?}", query);
 

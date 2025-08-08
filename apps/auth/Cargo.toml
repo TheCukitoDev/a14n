@@ -14,3 +14,4 @@ sqlx = { workspace = true, features = [
     "tls-rustls-aws-lc-rs",
     "postgres",
 ] }
+dotenvy = { workspace = true }
