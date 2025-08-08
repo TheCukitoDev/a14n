@@ -10,6 +10,10 @@ serde_json = { workspace = true }
 nanoid = { workspace = true }
 serde = { workspace = true }
 chrono = { workspace = true, features = ["serde"] }
-
+svix-ksuid = { workspace = true, features = ["serde"] }
+sqlx = { workspace = true, features = [
+    "runtime-tokio",
+    "tls-rustls-aws-lc-rs",
+] }
 [lints]
 workspace = true
